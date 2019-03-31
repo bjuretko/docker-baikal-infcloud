@@ -29,6 +29,6 @@ COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 # Put sqlite database and configuration on a volume to preserve for updates
 VOLUME ["${WEBROOT}/baikal/Specific"]
 
-EXPOSE 80
+EXPOSE 8800
 
 CMD [ "lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf" ]
