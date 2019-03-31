@@ -1,6 +1,6 @@
 # Originally baikal was developed for php5 which needed a an
-# alpine image of 3.4
-FROM alpine:3.4
+# alpine image of 3.5
+FROM alpine:3.5
 
 # See http://label-schema.org/rc1/ and https://microbadger.com/labels
 LABEL org.label-schema.name="baikal+infcloud - CalDAV/CardDAV web stack" \
