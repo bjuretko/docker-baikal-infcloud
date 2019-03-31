@@ -9,7 +9,6 @@ services:
       - ./baikal:/var/www/baikal/Specific
       - ./lighttpd.conf:/etc/lighttpd/lighttpd.conf:ro
       - ./infcloud.config.js:/var/www/infcloud/config.js:ro
-      - ./php.ini:/etc/php7/php.ini:ro
 
   # uncomment for mysql
   # https://github.com/bianjp/docker-mariadb-alpine/blob/master/docker-entrypoint.sh
