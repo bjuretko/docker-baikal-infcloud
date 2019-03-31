@@ -1,0 +1,28 @@
+version: "2"
+
+services:
+  baikal:
+    build: .
+    ports:
+      - "8800:8800"
+    volumes:
+      - ./baikal:/var/www/baikal/Specific
+      - ./lighttpd.conf:/etc/lighttpd/lighttpd.conf:ro
+      - ./infcloud.config.js:/var/www/infcloud/config.js:ro
+      - ./php.ini:/etc/php7/php.ini:ro
+
+  # uncomment for mysql
+  # https://github.com/bianjp/docker-mariadb-alpine/blob/master/docker-entrypoint.sh
+  #mysql:
+  #  restart: always
+  #  image: bianjp/mariadb-alpine:latest
+  #  environment:
+  #    MYSQL_ROOT_PASSWORD: 'mysql'
+  #    #MYSQL_RANDOM_ROOT_PASSWORD: 1
+  #    MYSQL_DATABASE: 'baikal'
+  #    MYSQL_USER: 'baikal'
+  #    MYSQL_PASS: 'baikal'
+  #  volumes:
+  #    - baikal-mysql:/var/lib/mysql
+#volumes:
+#  baikal-mysql:
