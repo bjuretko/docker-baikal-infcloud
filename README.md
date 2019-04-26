@@ -9,14 +9,14 @@ You need docker, docker-compose installed. The path `./baikal/db` must be writab
 docker-compose up
 ```
 
-Visit `http://localhost:8800/baikal/html/admin/` to configure baikal.
+Visit http://localhost:8800/baikal/html/admin/ to configure baikal.
 
 # Default config
 
 - no mail support
-- CalDAV URL: 
-- CardDAV URL:
-
+- Cal/CardDAV URL: 
+- CardDAV URL: http://localhost:8800/baikal/html/dav.php/principals/
+- Infcloud: http://localhost:8800/infcloud/
 
 # Autodiscovery
 
