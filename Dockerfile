@@ -20,7 +20,8 @@ RUN apk --no-cache update && apk --no-cache upgrade \
   php5-pdo_mysql php5-mysqli php5-ctype \
   && wget -O baikal.zip -q ${URL_BAIKAL} && unzip baikal.zip -d $WEBROOT/ && rm baikal.zip \
   && wget -O infcloud.zip -q ${URL_INFCLOUD} && unzip infcloud.zip -d $WEBROOT/ && rm infcloud.zip \
-  && apk del -rf --purge unzip zip wget ca-certificates
+  && apk del -rf --purge unzip zip wget ca-certificates \
+  && mkdir $WEBROOT/.well-known
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 
