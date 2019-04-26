@@ -14,8 +14,7 @@ Visit http://localhost:8800/baikal/html/admin/ to configure baikal.
 # Default config
 
 - no mail support
-- Cal/CardDAV URL: 
-- CardDAV URL: http://localhost:8800/baikal/html/dav.php/principals/
+- Cal/CardDAV URL: http://localhost:8800/baikal/html/dav.php/principals/
 - Infcloud: http://localhost:8800/infcloud/
 
 # Autodiscovery
