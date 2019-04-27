@@ -1,5 +1,5 @@
 # docker-baikal-infcloud
-Dockerized lighttpd + php5 + baikal + sqlite3 + infcloud (e.g. for NAS)
+Dockerized lighttpd + php7 + baikal + sqlite3 + infcloud (e.g. for NAS)
 
 # Install and setup
 
