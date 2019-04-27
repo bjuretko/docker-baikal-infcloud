@@ -41,6 +41,9 @@ You need docker, docker-compose installed. The path `./baikal/db` must be writab
 ```bash
 docker-compose up
 ```
+> **Note:**
+>
+> You can use env-vars for the mysql setup, see ./docker-compose.yml file.
 
 Visit `http://localhost:8800/baikal/html/admin/` to configure baikal.
 
