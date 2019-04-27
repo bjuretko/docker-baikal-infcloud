@@ -1,6 +1,27 @@
 # docker-baikal-infcloud
 Dockerized lighttpd + php5 + baikal + sqlite3 + infcloud (e.g. for NAS)
 
+# Why?
+
+- self-hosted on synology NAS: Synology does not provide an out-of-box solution. 
+  There is the CardDAV Servr, 
+  the WebDAV Server. now even a Calendar Service with integrated web frontend 
+  (but without adressbook). The cons: many spreaded packages and services, with 
+  rather old dependencies. You cannot set seperate user/credentials for the DAV
+  access which is not soa from a security standpoint as 2fa are not possible and
+  simple basic auth mechanisms may leak.
+- Alternatives like owncloud/nextcloud or other colaboration suites are too much
+- for this simple usecase
+- Using baikal for several years without any bigger issues makes it pretty robust
+- for family or internal small company/team management.
+- You do not need email or other shared services
+- Widely supported clients, unfortunetly not natively with Android.
+
+> I use this setup for personal management with the family. As we used it for 
+> several years, this project is supporting my migration from a DS213j to 
+> DS718+ with Docker. Still not that easy to convince everybody to use cloud ☁︎ 
+> services 🤷🏻‍.
+
 # Install and setup
 
 You need docker, docker-compose installed. The path `./baikal/db` must be writable.
