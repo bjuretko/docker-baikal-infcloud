@@ -23,3 +23,6 @@ You can support easy mail-style (*username@hostname.domain*) setup by with
 configuring service discovery features as described.
 [here](http://sabre.io/dav/service-discovery/).
 
+# HTTPs / SSL / TLS
+
+The current setup does not support https directly and suppose an existing reverse proxy (e.g. https://traefik.io)
