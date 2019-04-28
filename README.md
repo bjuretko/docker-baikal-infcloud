@@ -1,5 +1,10 @@
 # docker-baikal-infcloud
-Dockerized lighttpd + php5 + baikal + sqlite3 + infcloud (e.g. for NAS)
+Dockerized [lighttpd](https://www.lighttpd.net/) + 
+php5 + [baikal](https://github.com/sabre-io/Baikal) + 
+sqlite3 + [infcloud](https://www.inf-it.com/open-source/clients/infcloud/) 
+based on [Alpine Linux](https://mirrordocker.com/_/alpine) (e.g. for NAS)
+
+![Infcloud webinterface](doc/infcloud.png)
 
 # Why?
 
@@ -11,11 +16,13 @@ Dockerized lighttpd + php5 + baikal + sqlite3 + infcloud (e.g. for NAS)
   access which is not soa from a security standpoint as 2fa are not possible and
   simple basic auth mechanisms may leak.
 - Alternatives like owncloud/nextcloud or other colaboration suites are too much
-- for this simple usecase
+  for this simple usecase
 - Using baikal for several years without any bigger issues makes it pretty robust
-- for family or internal small company/team management.
+  for family or internal small company/team management.
 - You do not need email or other shared services
 - Widely supported clients, unfortunetly not natively with Android.
+- create backups of calendar and contact data
+- Syncs well with Windows, MacOS, Android and iOS
 
 > I use this setup for personal management with the family. As we used it for 
 > several years, this project is supporting my migration from a DS213j to 
@@ -47,3 +54,4 @@ configuring service discovery features as described.
 # HTTPs / SSL / TLS
 
 The current setup does not support https directly and suppose an existing reverse proxy (e.g. https://traefik.io)
+
