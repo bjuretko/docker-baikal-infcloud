@@ -55,3 +55,24 @@ configuring service discovery features as described.
 
 The current setup does not support https directly and suppose an existing reverse proxy (e.g. https://traefik.io)
 
+# Related projects
+
+There are some other projects related to this topic, but
+I couldnt find one using latest Alpine with php7 and a small httpd 
+having a small footprint eventually running it with sqlite.
+
+- https://gitlab.com/Plague_Doctor/docker-baikal/ 
+  
+  Did not support php7 when I created this project and uses nginx instead of lighttpd. Unfortunately I did not find it on my research beforehand.
+  The image is [published on docker](https://hub.docker.com/r/plaguedr/baikal) 
+  hub, which may be important for others 
+
+- https://github.com/maschel/docker-baikal
+  
+  Did not work for me (uses php7 with Version 0.4.6 of Baikal [which had problems
+  creating calendars for me](https://github.com/bjuretko/docker-baikal-infcloud/issues/8)). Does not incorporate InfCloud
+
+- https://github.com/ckulka/baikal-docker
+  
+  As the project before. Supports builds for different archs and nginx/apache.
+  I planned to incorporate infcloud with the image, [which it doesn't](https://github.com/ckulka/baikal-docker/issues/13) and build an own image running the service with non-root privileges.
