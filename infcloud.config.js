@@ -335,7 +335,7 @@ var globalNetworkCheckSettings={
 	href: location.protocol+'//'+location.hostname+
 		(location.port ? ':'+location.port: '')+
 		location.pathname.replace(RegExp('/+[^/]+/*(index\.html)?$'),'')+
-		'/caldav.php/',
+		'/baikal/html/dav.php/principals/',
 	timeOut: 90000,
 	lockTimeOut: 10000,
 	checkContentType: true,
@@ -388,7 +388,7 @@ var globalNetworkCheckSettings={
 // experience auth popups on some browsers).
 // If undefined (or empty), custom header for HTTP basic auth is used.
 // Example:
-//var globalUseJqueryAuth=false;
+var globalUseJqueryAuth=true;
 
 
 // globalBackgroundSync

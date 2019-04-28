@@ -16,16 +16,17 @@ WORKDIR ${WEBROOT}
 # We need store to files before as with newer zip/unzip pipelining is not possible
 RUN apk --no-cache update && apk --no-cache upgrade \
   && apk --no-cache add wget ca-certificates unzip zip lighttpd sqlite php5-cgi php5-sqlite3 php5-dom \
-  php5-openssl php5-pdo php5-pdo_sqlite \
+  php5-openssl php5-pdo php5-pdo_sqlite php5-xml php5-xmlreader php5-json \
   php5-pdo_mysql php5-mysqli php5-ctype \
-  && wget -O infcloud.zip -q ${URL_INFCLOUD} && unzip infcloud.zip -d ${WEBROOT}/ && rm infcloud.zip \
   && wget -O baikal.zip -q ${URL_BAIKAL} && unzip baikal.zip -d ${WEBROOT}/ && rm baikal.zip \
-  && apk del -rf --purge unzip zip wget ca-certificates
+  && wget -O infcloud.zip -q ${URL_INFCLOUD} && unzip infcloud.zip -d ${WEBROOT}/ && rm infcloud.zip \
+  && apk del -rf --purge unzip zip wget ca-certificates \
+  && mkdir ${WEBROOT}/.well-known
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY infcloud.config.js ${WEBROOT}/infcloud/config.js:ro
 
-# TODO: use "USER" directive to change owner end cveexec rights
+# TODO: use "USER" directive to change owner end cve rights
 
 # Put sqlite database and configuration on a volume to preserve for updates
 VOLUME ["${WEBROOT}/baikal/Specific"]
