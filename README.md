@@ -39,7 +39,7 @@ The following commands can be executed via `make` and `make run` as well
 
 First build the image
 ```bash
-docker build --tag "alpine-infcloud-baikal:3.5-0.13.1-0.4.6" --tag "alpine-infcloud-baikal:latest" .
+docker build --tag "alpine-infcloud-baikal:3.9-0.13.1-0.5.2" --tag "alpine-infcloud-baikal:latest" .
 ```
 or
 ```bash

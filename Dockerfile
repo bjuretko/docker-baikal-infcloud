@@ -34,7 +34,7 @@ RUN apk --no-cache update && apk --no-cache upgrade \
   && mkdir ${WEBROOT}/.well-known
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY infcloud.config.js ${WEBROOT}/infcloud/config.js:ro
+COPY infcloud.config.js ${WEBROOT}/infcloud/config.js
 
 # limit file permissions
 RUN chmod -R g-w ${WEBROOT} && chown -R lighttpd:nobody ${WEBROOT}
