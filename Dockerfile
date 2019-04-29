@@ -32,7 +32,12 @@ RUN apk --no-cache update && apk --no-cache upgrade \
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY infcloud.config.js ${WEBROOT}/infcloud/config.js:ro
 
-# TODO: use "USER" directive to change owner end cve rights
+# limit file permissions
+RUN chmod -R g-w ${WEBROOT} && chown -R lighttpd:nobody ${WEBROOT}
+
+# Run container as user nobody, the shared volume will have 
+# hosts file permissions and is therefore writable by USER
+USER nobody
 
 # Put sqlite database and configuration on a volume to preserve for updates
 VOLUME ["${WEBROOT}/baikal/Specific"]
