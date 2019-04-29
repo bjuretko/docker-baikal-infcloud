@@ -1,8 +1,11 @@
 # docker-baikal-infcloud
-Dockerized [lighttpd](https://www.lighttpd.net/) + 
-php5 + [baikal](https://github.com/sabre-io/Baikal) + 
-sqlite3 + [infcloud](https://www.inf-it.com/open-source/clients/infcloud/) 
-based on [Alpine Linux](https://mirrordocker.com/_/alpine) (e.g. for NAS)
+- Dockerized 
+- [lighttpd](https://www.lighttpd.net/)
+- php7 + sqlite3 and mysql support
+- [baikal](https://github.com/sabre-io/Baikal) 0.5.2
+- [infcloud](https://www.inf-it.com/open-source/clients/infcloud/) 0.1.13
+- [Alpine Linux](https://mirrordocker.com/_/alpine) 3.9
+- targets NAS
 
 ![Infcloud webinterface](doc/infcloud.png)
 
@@ -39,7 +42,7 @@ The following commands can be executed via `make` and `make run` as well
 
 First build the image
 ```bash
-docker build --tag "alpine-infcloud-baikal:3.5-0.13.1-0.4.6" --tag "alpine-infcloud-baikal:latest" .
+docker build --tag "alpine-infcloud-baikal:3.9-0.13.1-0.5.2" --tag "alpine-infcloud-baikal:latest" .
 ```
 or
 ```bash
