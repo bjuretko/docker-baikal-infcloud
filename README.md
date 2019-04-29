@@ -31,19 +31,76 @@ based on [Alpine Linux](https://mirrordocker.com/_/alpine) (e.g. for NAS)
 
 # Install and setup
 
+
+
+## With sqlite
+
+The following commands can be executed via `make` and `make run` as well
+
+First build the image
+```bash
+docker build --tag "alpine-infcloud-baikal:3.5-0.13.1-0.4.6" --tag "alpine-infcloud-baikal:latest" .
+```
+or
+```bash
+make
+```
+
+Test it with
+
+```bash
+docker run \
+    --publish 8800:8800 \
+    --volume "$(pwd)/baikal:/var/www/baikal/Specific" \
+    "alpine-infcloud-baikal"
+```
+or
+```bash
+make run
+```
+
+And point your Browser http://localhost:8800/baikal/html/admin/ to configure baikal.
+
+To start the container detached (background) exec
+
+```bash
+docker run \
+    --publish 8800:8800 \
+    --volume "$(pwd)/baikal:/var/www/baikal/Specific" \
+    --name baikal-infcloud \
+    --restart always \
+    --detach \
+    "alpine-infcloud-baikal"
+```
+
+## With mysql
+
+To start baikal with mariadb (mysql) backend you can use the provided docker-compose file.
+
 You need docker, docker-compose installed. The path `./baikal/db` must be writable.
 
 ```bash
 docker-compose up
 ```
+> **Note:**
+>
+> You can use env-vars for the mysql setup, see ./docker-compose.yml file.
 
 Visit http://localhost:8800/baikal/html/admin/ to configure baikal.
 
+## Timezone
+
+You can change the timezone of the container on build-time via the
+`docker build --build-arg TIMEZONE=Europe/Berlin ...` command-line option 
+or set the timezone in the `Makefile`
+
 # Default config
 
+- HTTP port: 8800
 - no mail support
 - Cal/CardDAV URL: http://localhost:8800/baikal/html/dav.php/principals/
 - Infcloud: http://localhost:8800/infcloud/
+- Timezone: Europe/Berlin
 
 # Autodiscovery
 
