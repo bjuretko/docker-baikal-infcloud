@@ -21,7 +21,7 @@ WORKDIR ${WEBROOT}
 # need zip / unzip for build process to support symlinks in archives.
 # We need store to files before as with newer zip/unzip pipelining is not possible
 RUN apk --no-cache update && apk --no-cache upgrade \
-  && apk --no-cache add wget ca-certificates unzip zip lighttpd sqlite tzdata \
+  && apk --no-cache add wget ca-certificates unzip lighttpd sqlite tzdata \
   php7-cgi php7-sqlite3 php7-dom \
   php7-openssl php7-pdo php7-pdo_sqlite php7-xml php7-xmlreader php7-xmlwriter php7-json \
   php7-pdo_mysql php7-mysqli php7-ctype php7-session php7-mbstring \
@@ -29,7 +29,7 @@ RUN apk --no-cache update && apk --no-cache upgrade \
   && echo ${TIMEZONE} > /etc/timezone && date \
   && wget -O baikal.zip -q ${URL_BAIKAL} && unzip baikal.zip -d ${WEBROOT}/ && rm baikal.zip \
   && wget -O infcloud.zip -q ${URL_INFCLOUD} && unzip infcloud.zip -d ${WEBROOT}/ && rm infcloud.zip \
-  && apk del -rf --purge unzip zip wget ca-certificates tzdata \
+  && apk del -rf --purge unzip wget ca-certificates tzdata \
   && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/g" /etc/php7/php.ini \
   && mkdir ${WEBROOT}/.well-known
 
