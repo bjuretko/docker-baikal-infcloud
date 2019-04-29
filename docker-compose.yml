@@ -12,16 +12,16 @@ services:
 
   # uncomment for mysql
   # https://github.com/bianjp/docker-mariadb-alpine/blob/master/docker-entrypoint.sh
-  #mysql:
-  #  restart: always
-  #  image: bianjp/mariadb-alpine:latest
-  #  environment:
-  #    MYSQL_ROOT_PASSWORD: 'mysql'
-  #    #MYSQL_RANDOM_ROOT_PASSWORD: 1
-  #    MYSQL_DATABASE: 'baikal'
-  #    MYSQL_USER: 'baikal'
-  #    MYSQL_PASS: 'baikal'
-  #  volumes:
-  #    - baikal-mysql:/var/lib/mysql
-#volumes:
-#  baikal-mysql:
+  mysql:
+    restart: always
+    image: bianjp/mariadb-alpine:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql}
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-baikal}
+      MYSQL_USER: ${MYSQL_USER:-baikal}
+      MYSQL_PASS: ${MYSQL_PASS:-baikal}
+    volumes:
+      - baikal-mysql:/var/lib/mysql
+volumes:
+  baikal-mysql:
