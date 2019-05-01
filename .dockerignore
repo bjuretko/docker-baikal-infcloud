@@ -1,3 +1,7 @@
-.git
-baikal
-tmp
+# exclude everything
+*
+# but the necessary build files
+! Dockerfile
+! docker-entrypoint.sh
+! infcloud.config.js
+! lighttpd.conf
