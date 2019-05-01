@@ -12,6 +12,7 @@ LABEL org.label-schema.name="baikal+infcloud - CalDAV/CardDAV web stack" \
 ENV URL_BAIKAL=https://github.com/sabre-io/Baikal/releases/download/0.5.2/baikal-0.5.2.zip
 ENV URL_INFCLOUD=https://www.inf-it.com/InfCloud_0.13.1.zip
 ENV WEBROOT=/var/www
+ENV BAIKAL_DATA=${WEBROOT}/baikal/Specific
 
 ARG TIMEZONE=Europe/Berlin
 ENV TIMEZONE=${TIMEZONE}
@@ -21,7 +22,7 @@ WORKDIR ${WEBROOT}
 # need zip / unzip for build process to support symlinks in archives.
 # We need store to files before as with newer zip/unzip pipelining is not possible
 RUN apk --no-cache update && apk --no-cache upgrade \
-  && apk --no-cache add wget ca-certificates unzip lighttpd sqlite tzdata \
+  && apk --no-cache add wget ca-certificates unzip lighttpd sqlite tzdata su-exec \
   php7-cgi php7-sqlite3 php7-dom \
   php7-openssl php7-pdo php7-pdo_sqlite php7-xml php7-xmlreader php7-xmlwriter php7-json \
   php7-pdo_mysql php7-mysqli php7-ctype php7-session php7-mbstring \
@@ -35,16 +36,18 @@ RUN apk --no-cache update && apk --no-cache upgrade \
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY infcloud.config.js ${WEBROOT}/infcloud/config.js
+COPY docker-entrypoint.sh /
 
 # limit file permissions
-RUN chmod -R g-w ${WEBROOT} && chown -R lighttpd:nobody ${WEBROOT}
-
-# Run container as user nobody, the shared volume will have 
-# hosts file permissions and is therefore writable by USER
-USER nobody
+RUN chown -R lighttpd:nobody ${WEBROOT} && chmod -R g-w ${WEBROOT}
 
 # Put sqlite database and configuration on a volume to preserve for updates
-VOLUME ["${WEBROOT}/baikal/Specific"]
+VOLUME ["${BAIKAL_DATA}"]
+
+# Run CMD as user nobody, the shared volume will have 
+# hosts file permissions and needs to be writable for the user
+# the entrypoint will remap the uid of "nobody" to match the host's uid.
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
 EXPOSE 8800
 
