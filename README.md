@@ -32,32 +32,36 @@
 > DS718+ with Docker. Still not that easy to convince everybody to use cloud ☁︎ 
 > services 🤷🏻‍.
 
-# Install and setup
+# Build and Run
 
+## Build docker image
 
+To build the Docker image just call
 
-## With sqlite
-
-The following commands can be executed via `make` and `make run` as well
-
-First build the image
-```bash
-docker build --tag "alpine-infcloud-baikal:3.9-0.13.1-0.5.2" --tag "alpine-infcloud-baikal:latest" .
-```
-or
 ```bash
 make
 ```
 
-Test it with
+You can provide additional arguments to the docker command like
 
 ```bash
-docker run \
-    --publish 8800:8800 \
-    --volume "$(pwd)/baikal:/var/www/baikal/Specific" \
-    "alpine-infcloud-baikal"
+make args=--no-cache
 ```
-or
+
+to export the image as a tarball:
+
+```bash
+make export
+```
+
+See Makefile for more information.
+
+## Run
+
+### With sqlite
+
+First build the image. Then call 
+
 ```bash
 make run
 ```
@@ -67,16 +71,10 @@ And point your Browser http://localhost:8800/baikal/html/admin/ to configure bai
 To start the container detached (background) exec
 
 ```bash
-docker run \
-    --publish 8800:8800 \
-    --volume "$(pwd)/baikal:/var/www/baikal/Specific" \
-    --name baikal-infcloud \
-    --restart always \
-    --detach \
-    "alpine-infcloud-baikal"
+make args="--restart always --detach"
 ```
 
-## With mysql
+### With mysql
 
 To start baikal with mariadb (mysql) backend you can use the provided docker-compose file.
 
