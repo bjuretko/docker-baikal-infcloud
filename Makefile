@@ -11,6 +11,7 @@ build:
 			--tag "$(image):latest" .
 
 export:
+	rm "$(image).$(tag).tgz" || true
 	docker image save --output "$(image).$(tag).tgz" "$(image):$(tag)"
 
 run:
