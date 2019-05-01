@@ -32,13 +32,14 @@ RUN apk --no-cache update && apk --no-cache upgrade \
   && wget -O infcloud.zip -q ${URL_INFCLOUD} && unzip infcloud.zip -d ${WEBROOT}/ && rm infcloud.zip \
   && apk del -rf --purge unzip wget ca-certificates tzdata \
   && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/g" /etc/php7/php.ini \
-  && mkdir ${WEBROOT}/.well-known
+  && mkdir ${WEBROOT}/.well-known \
+  && mkdir ${BAIKAL_DATA}/db
 
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY infcloud.config.js ${WEBROOT}/infcloud/config.js
 COPY docker-entrypoint.sh /
 
-# limit file permissions
+# limit file permissions, see docker-entrypoint.sh
 RUN chown -R lighttpd:nobody ${WEBROOT} && chmod -R g-w ${WEBROOT}
 
 # Put sqlite database and configuration on a volume to preserve for updates
