@@ -6,10 +6,13 @@ timezone = Europe/Berlin
 
 build:
 	docker build \
-			--no-cache \
 			--build-arg TIMEZONE=$(timezone) \
 			--tag "$(image):$(tag)" \
 			--tag "$(image):latest" .
+
+export:
+	rm "$(image).$(tag).tgz" || true
+	docker image save --output "$(image).$(tag).tgz" "$(image):$(tag)"
 
 run:
 	docker run \
