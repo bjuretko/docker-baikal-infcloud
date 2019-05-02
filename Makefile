@@ -8,7 +8,8 @@ build:
 	docker build \
 			--build-arg TIMEZONE=$(timezone) \
 			--tag "$(image):$(tag)" \
-			--tag "$(image):latest" .
+			--tag "$(image):latest" \
+			$(args) .
 
 export:
 	rm "$(image).$(tag).tgz" || true
@@ -18,4 +19,4 @@ run:
 	docker run \
 			--publish 8800:8800 \
 			--volume "$$(pwd)/baikal:/var/www/baikal/Specific" \
-			$(image)
+			$(args) $(image)
