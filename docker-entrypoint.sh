@@ -12,6 +12,7 @@ UID=${UID:-$(stat -c '%u' ${BAIKAL_DATA})}
 # if UID is already remapped or we are root (like on macOS) do nothing
 # if not set uid of "nobody" to the host's uid of the shared volume
 if [ "$(id -u nobody)" -ne "${UID}" -a "${UID}" -ge "0" ]; then
+  mkdir -p ${BAIKAL_DATA}/db
   # we will install usermod here to change the uid of the user "nobody"
   # see https://github.com/chrootLogin/docker-nextcloud/issues/3
   echo "Modding uid of user nobody to ${UID}"
