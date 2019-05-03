@@ -126,6 +126,10 @@ having a small footprint eventually running it with sqlite.
   The image is [published on docker](https://hub.docker.com/r/plaguedr/baikal) 
   hub, which may be important for others 
 
+- https://github.com/bambocher/docker-baikal
+  
+  Uses older baikal version with php5 and without infcloud
+  
 - https://github.com/maschel/docker-baikal
   
   Did not work for me (uses php7 with Version 0.4.6 of Baikal [which had problems
