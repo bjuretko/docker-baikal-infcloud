@@ -110,6 +110,7 @@ or set the timezone in the `Makefile`
 You can support easy mail-style (*username@hostname.domain*) setup by with 
 configuring service discovery features as described.
 [here](http://sabre.io/dav/service-discovery/).
+> The docker container  contains these redirects setup already.
 
 # HTTPs / SSL / TLS
 
@@ -136,3 +137,7 @@ having a small footprint eventually running it with sqlite.
   
   As the project before. Supports builds for different archs and nginx/apache.
   I planned to incorporate infcloud with the image, [which it doesn't](https://github.com/ckulka/baikal-docker/issues/13) and build an own image running the service with non-root privileges.
+
+# Synology
+
+Look [here](synology.md) for setup instructions on a Synology NAS.
