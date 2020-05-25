@@ -71,7 +71,7 @@ And point your Browser http://localhost:8800/baikal/html/admin/ to configure bai
 To start the container detached (background) exec
 
 ```bash
-make args="--restart always --detach"
+make run args="--restart always --detach"
 ```
 
 ### With mysql
